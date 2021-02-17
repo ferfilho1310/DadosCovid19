@@ -1,87 +1,29 @@
-package com.example.covid19.Model;
+package com.example.covid19.Model
 
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.SerializedName
 
-public class DadosCovidBrazil {
-
+data class DadosCovidBrazil(
     @SerializedName("uid")
-    private Integer uid;
+    var uid: Int? = null,
+
     @SerializedName("uf")
-    private String uf;
+    var uf: String? = null,
+
     @SerializedName("state")
-    private String state;
+    var state: String? = null,
+
     @SerializedName("cases")
-    private Integer cases;
+    var cases: Int? = null,
+
     @SerializedName("deaths")
-    private Integer deaths;
+    var deaths: Int? = null,
+
     @SerializedName("suspects")
-    private Integer suspects;
+    var suspects: Int? = null,
+
     @SerializedName("refuses")
-    private Integer refuses;
+    var refuses: Int? = null,
+
     @SerializedName("datetime")
-    private String datetime;
-
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
-
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public Integer getCases() {
-        return cases;
-    }
-
-    public void setCases(Integer cases) {
-        this.cases = cases;
-    }
-
-    public Integer getDeaths() {
-        return deaths;
-    }
-
-    public void setDeaths(Integer deaths) {
-        this.deaths = deaths;
-    }
-
-    public Integer getSuspects() {
-        return suspects;
-    }
-
-    public void setSuspects(Integer suspects) {
-        this.suspects = suspects;
-    }
-
-    public Integer getRefuses() {
-        return refuses;
-    }
-
-    public void setRefuses(Integer refuses) {
-        this.refuses = refuses;
-    }
-
-    public String getDatetime() {
-        return datetime;
-    }
-
-    public void setDatetime(String datetime) {
-        this.datetime = datetime;
-    }
-}
+    var datetime: String? = null
+)

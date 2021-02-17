@@ -1,18 +1,15 @@
-package com.example.covid19.Retrofit;
+package com.example.covid19.Retrofit
 
-import com.example.covid19.Model.ListDadosCovidMundo;
-import com.example.covid19.Model.ListDadosCovidBrazil;
+import retrofit2.http.GET
+import retrofit2.http.Url
+import com.example.covid19.Model.ListDadosCovidBrazil
+import com.example.covid19.Model.ListDadosCovidMundo
+import retrofit2.Call
 
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
-import retrofit2.http.Url;
+interface IDadosCovidService {
+    @GET
+    fun getDadosCovid(@Url url: String?): Call<ListDadosCovidBrazil?>?
 
-public interface IDadosCovidService {
-
-    @GET()
-    Call<ListDadosCovidBrazil> getDadosCovid(@Url String url);
-
-    @GET()
-    Call<ListDadosCovidMundo> getDadosCovidMundo(@Url String url);
+    @GET
+    fun getDadosCovidMundo(@Url url: String?): Call<ListDadosCovidMundo?>?
 }

@@ -59,9 +59,7 @@
                     android:padding="8dp" />
 
             </androidx.cardview.widget.CardView>
-
-
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
+
 </LinearLayout>
