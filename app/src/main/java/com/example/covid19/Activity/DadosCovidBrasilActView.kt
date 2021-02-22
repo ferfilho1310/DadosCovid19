@@ -29,7 +29,7 @@ class DadosCovidBrasilActView : AppCompatActivity() {
         ChartUtil.configuracaoLegenda(barchartDadosMundo)
 
         mainActivityViewModel.getDadosCovidBrasil().observe(this, {
-            ChartUtil.morteCovidPorEstado(it,piechart)
+            ChartUtil.morteCovidPorEstado(it, piechart)
         })
 
         mainActivityViewModel.getDadosCovidMundo().observe(this, {

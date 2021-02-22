@@ -19,21 +19,21 @@ import com.github.mikephil.charting.data.PieEntry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class ChartUtil {
 
-    public static void morteCovidPorPais(ListDadosCovidMundo listDadosCovidMundo, PieChart barChart){
+    public static void morteCovidPorPais(ListDadosCovidMundo listDadosCovidMundo, PieChart barChart) {
 
         List<PieEntry> mortes = new ArrayList();
         PieDataSet dataSet;
 
-        for (DadosCovidMundo dadosCovidBrazil : listDadosCovidMundo.getData()) {
-            if (dadosCovidBrazil.getDeaths() >= 30000) {
-                mortes.add(new PieEntry(Integer.parseInt(String.valueOf(dadosCovidBrazil.getDeaths())), dadosCovidBrazil.getCountry()));
-            }
-        }
+        listDadosCovidMundo.getData().stream().filter(dadosCovidMundo -> dadosCovidMundo.getDeaths() >= 30000)
+                .forEach(dadosCovidMundo -> mortes.add(new PieEntry(Integer.parseInt(String.valueOf(dadosCovidMundo.getDeaths())),
+                        dadosCovidMundo.getCountry())));
 
-        dataSet = new PieDataSet(mortes,"\n*Paises com mais de 30 mil mortes");
+        dataSet = new PieDataSet(mortes, "\n*Paises com mais de 30 mil mortes");
 
         dataSet.setColors(getColors());
         PieData data = new PieData(dataSet);
@@ -41,7 +41,7 @@ public class ChartUtil {
         barChart.invalidate();
     }
 
-    public static void morteCovidPorEstado(ListDadosCovidBrazil listDadosCovidBrazil, PieChart pieChart){
+    public static void morteCovidPorEstado(ListDadosCovidBrazil listDadosCovidBrazil, PieChart pieChart) {
         List<PieEntry> mortes = new ArrayList();
         PieDataSet dataSet;
 
@@ -51,7 +51,7 @@ public class ChartUtil {
             }
         }
 
-        dataSet = new PieDataSet(mortes,"\n*Estados com mais de 5 mil mortes");
+        dataSet = new PieDataSet(mortes, "\n*Estados com mais de 5 mil mortes");
 
         dataSet.setColors(getColors());
         PieData data = new PieData(dataSet);
@@ -69,19 +69,19 @@ public class ChartUtil {
         colors.add(Color.rgb(176, 219, 233));
         colors.add(Color.rgb(183, 176, 253));
         colors.add(Color.rgb(30, 144, 255));
-        colors.add(Color.rgb(176,196,222));
-        colors.add(Color.rgb(0,250,154));
-        colors.add(Color.rgb(152,251,152));
-        colors.add(Color.rgb(60,179,113));
-        colors.add(Color.rgb(128,128,128));
-        colors.add(Color.rgb(105,89,205));
-        colors.add(Color.rgb(72,61,139));
-        colors.add(Color.rgb(65,105,225));
-        colors.add(Color.rgb(0,191,255));
+        colors.add(Color.rgb(176, 196, 222));
+        colors.add(Color.rgb(0, 250, 154));
+        colors.add(Color.rgb(152, 251, 152));
+        colors.add(Color.rgb(60, 179, 113));
+        colors.add(Color.rgb(128, 128, 128));
+        colors.add(Color.rgb(105, 89, 205));
+        colors.add(Color.rgb(72, 61, 139));
+        colors.add(Color.rgb(65, 105, 225));
+        colors.add(Color.rgb(0, 191, 255));
         return colors;
     }
 
-    public static void configuracaoLegenda(PieChart pieChart){
+    public static void configuracaoLegenda(PieChart pieChart) {
         Legend legend = pieChart.getLegend();
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         legend.setFormSize(12F);
